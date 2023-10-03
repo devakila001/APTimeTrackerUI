@@ -1,0 +1,84 @@
+@page "/timeentry"
+<h3> Time Entry Project </h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">Id</div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <InputText @bind-Value="Model!.Id"></InputText>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">Name</div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <InputText @bind-Value="Model!.Name"></InputText>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">EntryDate</div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <InputDate @bind-Value="Model!.EntryDate"></InputDate>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">EntryTime</div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <InputDate @bind-Value="Model!.EntryTime"></InputDate>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">ExitTime</div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <InputDate @bind-Value="Model!.ExitTime"></InputDate>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-4">
+            <button class="btn btn-secondary">Cancel</button>
+            <button class="btn btn-primary" @onclick="SaveEntry">Save</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+             <button class="btn btn-secondary">Clear</button>
+            <button class="btn btn-primary" @onclick="PersistAllEntries">Persist</button>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Person</th>
+                <th>EntryDate</th>
+                <th>Entry</th>
+                <th>Exit</th>
+                <th>Total Hours</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var exitingTimeEntry in ExistingTimeEntries)
+            {
+                <tr>
+                    <td>@exitingTimeEntry.PersonName</td>
+                    <td>@exitingTimeEntry.EntryDate.ToShortDateString()</td>
+                    <td>@exitingTimeEntry.EntryTime.ToShortTimeString()</td>
+                    <td>@exitingTimeEntry.ExitTime.ToShortTimeString()</td>
+                    <td>@exitingTimeEntry.TotalHours</td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
