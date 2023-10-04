@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TimeTrackerUI.Models;
-{
+namespace TimeTrackerUI.Models{
     public class TimeTracker
     {
         [Required]
@@ -46,6 +45,8 @@ namespace TimeTrackerUI.Models;
         }
     }
 }
+
+
 
 
 
